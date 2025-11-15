@@ -36,3 +36,24 @@ class LoginAPI:
     def login(self, test_data):
         return requests.post(url=self.url_login, json=test_data)
 
+    def login_yml(self, username: str, password: str, code: str, uuid: str) -> requests.Response:
+        """
+        登录接口
+        :param username: 用户名
+        :param password: 密码
+        :param code: 验证码（仓库默认可固定为"2"）
+        :param uuid: 验证码接口返回的uuid
+        :return: 登录响应对象
+        """
+        headers = {"Content-Type": "application/json"}
+        data = {
+            "username": username,
+            "password": password,
+            "code": code,
+            "uuid": uuid
+        }
+        return requests.post(
+            url=self.url_login,
+            json=data,
+            headers=headers
+        )

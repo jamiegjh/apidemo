@@ -1,0 +1,32 @@
+# 登录接口测试数据（多场景覆盖）
+-
+  username: "admin"
+  password: "HM_2023_test"
+  code: "2"
+  expected_code: 200
+  expected_msg: "成功"
+  case_name: "正常登录"
+
+-
+  username: "admin"
+  password: "wrong_password"
+  code: "2"
+  expected_code: 500
+  expected_msg: "错误"
+  case_name: "密码错误登录"
+
+-
+  username: "invalid_user"
+  password: "HM_2023_test"
+  code: "2"
+  expected_code: 500
+  expected_msg: "错误"
+  case_name: "用户名不存在登录"
+
+-
+  username: ""
+  password: "HM_2023_test"
+  code: "2"
+  expected_code: 500
+  expected_msg: "错误"
+  case_name: "用户名为空登录"

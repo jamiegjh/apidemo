@@ -6,6 +6,13 @@ import os
 # 设置项目环境域名
 BASE_URL = "http://kdtx-test.itheima.net"
 
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# 测试账号
+ADMIN_USERNAME = "admin"
+ADMIN_PASSWORD = "HM_2023_test"
+
 # 获取项目根路径
 BASE_PATH = os.path.dirname(__file__)
 print(BASE_PATH)

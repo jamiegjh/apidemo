@@ -12,7 +12,7 @@ login_data = {
     "username": "admin",
     "password": "HM_2023_test",
     "code": 2,
-    "uuid": "d6ef71b1abb24453ace87022b67f8119"
+    "uuid": "daa160530dfb4ce4888a29a25f20411a"
 }
 response = requests.post(url=url, headers=header_data, json=login_data)
 

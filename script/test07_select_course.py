@@ -30,7 +30,7 @@ class TestCourseAPI:
 
     # 查询存在的课程
     def test01_select_success(self):
-        response = self.course_api.select_course(test_data="?name=测试开发提升课01", token=TestCourseAPI.TOKEN)
+        response = self.course_api.select_course(test_data="?name=wkk_test_9_9", token=TestCourseAPI.TOKEN)
         print(response.json())
         # 断言响应状态码
         assert 200 == response.status_code
