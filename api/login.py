@@ -16,6 +16,7 @@
 # 导包
 import requests
 from apiTestFramework import config
+from apiTestFramework.common.request_util import send_request
 
 
 # 创建接口类
@@ -57,3 +58,26 @@ class LoginAPI:
             json=data,
             headers=headers
         )
+
+    def get_captcha_uuid(self) -> str:
+        """获取验证码UUID（登录依赖）"""
+        response = send_request(method="GET", url=self.url_verify)
+        uuid = response.json().get("uuid")
+        if not uuid:
+            raise ValueError("获取验证码UUID失败")
+        return uuid
+
+    def login_get_token(self, username: str, password: str) -> str:
+        """登录并返回Token（核心公共函数）"""
+        uuid = self.get_captcha_uuid()
+        login_data = {
+            "username": username,
+            "password": password,
+            "code": "2",  # apidemo仓库默认验证码
+            "uuid": uuid
+        }
+        response = send_request(method="POST", url=self.url_login, json=login_data)
+        token = response.json().get("token")
+        if not token:
+            raise RuntimeError(f"登录失败：{response.json().get('msg')}")
+        return token
